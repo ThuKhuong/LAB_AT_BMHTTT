@@ -110,26 +110,3 @@ diff -u ~/LAB4/results/before.txt ~/LAB4/results/after.txt
 8. **NSE timeout:** Có thể do mạng, tường lửa, tải hệ thống hoặc script; không thể suy ra máy không có lỗ hổng.
 9. **Before / after:** Dùng cùng lệnh, cùng mục tiêu và điều kiện tương đương; kết hợp kết quả quét với bằng chứng thay đổi cấu hình.
 10. **Giảm bề mặt tấn công:** Tắt dịch vụ không cần thiết; giới hạn IP/cổng bằng firewall; cập nhật bản vá và tăng cường xác thực/phạm vi truy cập.
-
-## 6. Cấu trúc thư mục gợi ý để nộp
-```text
-LAB4/
-├── README.md
-├── results/
-│   ├── before.txt
-│   └── after.txt
-├── screenshots/
-│   ├── 01_virtualbox.png
-│   ├── 02_network.png
-│   ├── 03_connectivity.png
-│   ├── 04_tcp_scans.png
-│   ├── 05_udp_service_os.png
-│   ├── 06_nse.png
-│   └── 07_before_after.png
-└── report/
-    └── LAB4_BaoCao.docx
-```
-Tên file ảnh là gợi ý; thay bằng ảnh chụp và kết quả **thực tế** của bạn. Không đưa thông tin đăng nhập hoặc dữ liệu nhạy cảm lên GitHub.
-
-## 7. Kết luận
-LAB giúp thực hành thiết lập mạng thử nghiệm cô lập, khảo sát bề mặt mạng bằng nhiều phương pháp Nmap, nhận biết giới hạn của kết quả quét và đối chiếu sự thay đổi sau khi tăng cường cấu hình bảo mật. Kết luận cụ thể cần dựa trên ảnh chụp và đầu ra thu được trong quá trình thực hành.
