@@ -1,12 +1,12 @@
 # LAB 4 – Khảo sát và đánh giá bề mặt mạng bằng Nmap
-
+**MSSV:** 1150080142
+**Lớp:** 11_DH_CNPM2  
+**Năm học:** 2026–2027 
 ## 1. Mục tiêu
 - Thiết lập môi trường thực hành mạng cô lập với Kali Linux và Metasploitable 2.
 - Sử dụng Nmap để phát hiện máy đích, khảo sát trạng thái cổng, nhận diện dịch vụ và hệ điều hành.
 - Tìm hiểu sự khác biệt giữa các kỹ thuật quét TCP/UDP và kết quả của NSE.
 - So sánh kết quả quét trước và sau khi thay đổi cấu hình bảo mật (hardening).
-
-> **Lưu ý:** Chỉ thực hiện quét trên các máy ảo trong môi trường LAB được phép. Metasploitable 2 là máy cố ý chứa lỗ hổng; không kết nối Bridged hoặc đưa ra mạng công cộng.
 
 ## 2. Môi trường và công cụ
 | Thành phần | Vai trò |
@@ -30,8 +30,6 @@ Tải công cụ từ nguồn chính thức:
 4. Cấu hình adapter của Kali và Metasploitable 2 vào **cùng mạng Host-Only**. Nếu Kali dùng NAT tạm để cập nhật gói, ngắt NAT trước khi quét theo yêu cầu LAB.
 5. Khởi động hai máy, xác định IP và kiểm tra khả năng liên lạc.
 
-**Ảnh nên chụp:** danh sách 2 VM; cấu hình Network của từng VM; địa chỉ IP và kết quả kiểm tra kết nối.
-
 ### Lệnh chuẩn bị trên Kali
 ```bash
 sudo apt update
@@ -51,7 +49,6 @@ ping -c 4 <IP_METASPLOITABLE>
 ```
 
 ## 4. Các bước thực hành Nmap
-**Thay `<IP_METASPLOITABLE>` bằng IP máy đích trong LAB.** Ghi lại câu lệnh, thời điểm, địa chỉ IP và kết quả thực tế. Các lệnh dưới đây là mẫu để tổ chức thực hành; đối chiếu yêu cầu cụ thể trong tài liệu giảng viên trước khi nộp.
 
 ### 4.1. Phát hiện máy và khảo sát cổng
 ```bash
@@ -59,7 +56,6 @@ sudo nmap -sn <IP_METASPLOITABLE>
 sudo nmap <IP_METASPLOITABLE>
 sudo nmap -p 1-1000 <IP_METASPLOITABLE>
 ```
-**Chụp ảnh:** kết quả phát hiện host và danh sách cổng với trạng thái `open`, `closed` hoặc `filtered` (nếu có).
 
 ### 4.2. So sánh các kiểu quét TCP
 ```bash
@@ -70,7 +66,6 @@ sudo nmap -sF <IP_METASPLOITABLE>
 sudo nmap -sX <IP_METASPLOITABLE>
 sudo nmap -sN <IP_METASPLOITABLE>
 ```
-**Chụp ảnh:** kết quả SYN, TCP Connect, ACK và một kết quả FIN/Xmas/NULL để phân tích sự khác biệt.
 
 ### 4.3. UDP, phiên bản dịch vụ và hệ điều hành
 ```bash
@@ -78,14 +73,12 @@ sudo nmap -sU --top-ports 20 <IP_METASPLOITABLE>
 sudo nmap -sV <IP_METASPLOITABLE>
 sudo nmap -O <IP_METASPLOITABLE>
 ```
-**Chụp ảnh:** trạng thái UDP; tên/phiên bản dịch vụ; kết quả nhận diện hệ điều hành (nếu có).
 
 ### 4.4. NSE – kiểm tra bằng script
 Chỉ chạy script được phép trong phạm vi bài LAB. Ví dụ nhóm script mặc định:
 ```bash
 sudo nmap -sC <IP_METASPLOITABLE>
 ```
-**Chụp ảnh:** tên script và đầu ra thực tế; ghi rõ nếu script lỗi hoặc timeout. Timeout **không** chứng minh hệ thống không có lỗ hổng.
 
 ### 4.5. Lưu kết quả để đối chiếu
 ```bash
@@ -97,7 +90,6 @@ Sau khi thay đổi một cấu hình bảo mật trong môi trường LAB, ch�
 sudo nmap -sS -sV -oN ~/LAB4/results/after.txt <IP_METASPLOITABLE>
 diff -u ~/LAB4/results/before.txt ~/LAB4/results/after.txt
 ```
-**Chụp ảnh:** cấu hình đã thay đổi, kết quả `before` và `after`. Chỉ nhận xét sự thay đổi thực sự xuất hiện trong kết quả của bạn.
 
 ## 5. Nội dung phân tích cần trình bày
 1. **Open / closed / filtered:** Open có dịch vụ lắng nghe; closed không có dịch vụ lắng nghe nhưng máy đích phản hồi; filtered là trạng thái không xác định được do lọc gói hoặc thiếu phản hồi phù hợp.
